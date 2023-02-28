@@ -1,0 +1,43 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Folder" referent="RBXCCA07B6DB00B4B688C57D894F2C2E9E6">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">REAKTIVE</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags">G35ob3Rzd2FwIw==</BinaryString>
+		</Properties>
+		<Item class="LocalScript" referent="RBXF0AFA8498C5A4C9EA18408F2FABD5FD3">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Main</string>
+				<token name="RunContext">0</token>
+				<string name="ScriptGuid">{0D9E37A7-4AB1-4CC2-AB11-0C07D9BE8BE0}</string>
+				<ProtectedString name="Source"><![CDATA[local button = plugin:CreateToolbar("RE:AKTIVE"):CreateButton("RE:AKTIVE", "Preview", "rbxasset://textures/ui/InGameMenu/roblox_logo.png")
+
+button.Click:Connect(function()
+	button:SetActive(false)
+	local target
+	for _, Descendant in ipairs(game:GetDescendants()) do
+		if Descendant:GetAttribute("REAKTIVE") and Descendant.ClassName == "ModuleScript" then
+			target = require(Descendant)
+		end
+	end
+	if not target then return end
+	if #target.Host:GetChildren() == 0 then
+		target.Populate()
+		target.Update()
+		button:SetActive(true)
+	else
+		target.ClearFroxels()
+	end
+end)]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>
